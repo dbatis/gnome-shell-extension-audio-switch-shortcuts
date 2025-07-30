@@ -1,0 +1,124 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-06 18:06+0300\n"
+"PO-Revision-Date: 2025-07-30 23:45+0200\n"
+"Last-Translator: Uwe Senkler\n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+#: dist/extension.js:104
+msgid "Audio Input"
+msgstr "Audioeingabe"
+
+#: dist/extension.js:104
+msgid "Audio Output"
+msgstr "Audioausgabe"
+
+#: dist/extension.js:142
+msgid "Audio Switch Shortcuts"
+msgstr "Audio-Switch-Tastenkürzel"
+
+#: dist/extension.js:162
+msgid "Preferences..."
+msgstr "Einstellungen …"
+
+#: dist/keymapButton.js:55 dist/keymapButton.js:79
+msgid "New accelerator…"
+msgstr "Neues Tastenkürzel …"
+
+#: dist/keymapButton.js:82
+msgid "Use Backspace to clear"
+msgstr "Löschen mit Rücktaste"
+
+#: dist/prefs.js:21
+msgid "Audio Outputs"
+msgstr "Audioausgabegeräte"
+
+#: dist/prefs.js:25
+msgid "Audio Output Shortcuts"
+msgstr "Audioausgabe-Tastenkürzel"
+
+#: dist/prefs.js:28 dist/prefs.js:49
+msgid "Keyboard shortcut"
+msgstr "Tastenkürzel"
+
+#: dist/prefs.js:28
+msgid "Switch to next audio output device"
+msgstr "Zum nächsten Audioausgabegeräte umschalten"
+
+#: dist/prefs.js:31 dist/prefs.js:52
+msgid "Audio Devices"
+msgstr "Audiogeräte"
+
+#: dist/prefs.js:32 dist/prefs.js:53
+msgid ""
+"Select the devices to cycle through when the keyboard shortcut is pressed. "
+"Drag them to set the order."
+msgstr ""
+"Geräte wählen, zwischen denen mit Tastenkürzeln umgeschaltet werden soll. "
+"Sie können die Reihenfolge durch Ziehen ändern."
+
+#: dist/prefs.js:42
+msgid "Audio Inputs"
+msgstr "Audioeingabegeräte"
+
+#: dist/prefs.js:46
+msgid "Audio Input Shortcuts"
+msgstr "Audioeingabe-Tastenkürzel"
+
+#: dist/prefs.js:49
+msgid "Switch to next audio input device"
+msgstr "Zum nächsten Audioeingabegeräte umschalten"
+
+#: dist/prefs.js:136
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: dist/prefs.js:140
+msgid "Appearance"
+msgstr "Erscheinungsbild"
+
+#: dist/prefs.js:141
+msgid "Configure the appearance of this extension"
+msgstr "Erscheinung dieser Erweiterung einrichten"
+
+#: dist/prefs.js:146
+msgid "Show Indicator"
+msgstr "Indikator anzeigen"
+
+#: dist/prefs.js:147
+msgid "Show a tray icon, to get to settings quicker"
+msgstr ""
+"Leistensymbol anzeigen, um die Einstellungen schneller aufrufen zu können"
+
+#: dist/prefs.js:151
+msgid "Show Notifications"
+msgstr "Benachrichtigungen anzeigen"
+
+#: dist/prefs.js:152
+msgid "Display a notification message when you press a shortcut"
+msgstr "Beim Drücken eines Tastenkürzels eine Benachrichtigung anzeigen"
+
+#: dist/prefs.js:156
+msgid "Use Volume OSD for notifications"
+msgstr "Lautstärkebildschirmbereich für Benachrichtungen verwenden"
+
+#: dist/prefs.js:157
+msgid ""
+"Instead of the notification area, use the volume on-screen display area when "
+"switching devices."
+msgstr ""
+"Anstelle des Benachrichtigungsbereich beim Umschalten von Geräten den "
+"Lautstärkebildschirmbereich verwenden."
