@@ -105,3 +105,4 @@ You can also disable or remove the extension from the Gnome Extensions applicati
   [MIT License](https://github.com/marcinjahn/gnome-quicksettings-audio-devices-hider-extension?tab=MIT-1-ov-file#readme).
 - [Gnome Workbench](https://github.com/workbenchdev/Workbench) has been an invaluable resource to learn
   to program with GNOME technologies.
+- Thanks to [uwe-ss](https://github.com/uwe-ss) for the german translation.
