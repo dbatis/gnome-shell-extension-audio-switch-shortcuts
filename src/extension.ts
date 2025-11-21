@@ -166,7 +166,15 @@ export default class AudioSwitchShortCutsExtension extends Extension {
 
             const message = alternateName !== undefined ? alternateName : device.name
             const icon = this.mixer?.getIcon(device)
-            Main.osdWindowManager.show(-1, icon, message, null, null)
+
+            // GNOME versions 49+
+            if (typeof Main.osdWindowManager.showAll === 'function') {
+                Main.osdWindowManager.showAll(icon, message, null, null)
+            }
+            // Older GNOME versions
+            else if (typeof Main.osdWindowManager.show === 'function') {
+                Main.osdWindowManager.show(-1, icon, message, null, null)
+            }
 
         }
 
