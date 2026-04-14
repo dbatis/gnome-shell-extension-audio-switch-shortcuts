@@ -96,6 +96,7 @@ You can also disable or remove the extension from the Gnome Extensions applicati
 
 ## Credits
 
+- Code for audio notification contributed by [JnnyRdng](https://github.com/JnnyRdng)
 - Code for volume OSD display contributed by [tumist](https://github.com/tumist).
 - This program contains code derived from [Tiling Shell](https://github.com/domferr/tilingshell/tree/main),
   authored by Domenico Ferraro. Original code under
@@ -105,4 +106,4 @@ You can also disable or remove the extension from the Gnome Extensions applicati
   [MIT License](https://github.com/marcinjahn/gnome-quicksettings-audio-devices-hider-extension?tab=MIT-1-ov-file#readme).
 - [Gnome Workbench](https://github.com/workbenchdev/Workbench) has been an invaluable resource to learn
   to program with GNOME technologies.
-- Thanks to [uwe-ss](https://github.com/uwe-ss) for the german translation.
+- Thanks to [uwe-ss](https://github.com/uwe-ss) for the German translation.
