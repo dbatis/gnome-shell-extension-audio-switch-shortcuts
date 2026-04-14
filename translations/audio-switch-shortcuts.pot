@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-08 10:53+0530\n"
+"POT-Creation-Date: 2026-04-14 14:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: dist/extension.js:104
+#: dist/extension.js:105
 msgid "Audio Input"
 msgstr ""
 
-#: dist/extension.js:104
+#: dist/extension.js:105
 msgid "Audio Output"
 msgstr ""
 
-#: dist/extension.js:142
+#: dist/extension.js:159
 msgid "Audio Switch Shortcuts"
 msgstr ""
 
-#: dist/extension.js:162
+#: dist/extension.js:179
 msgid "Preferences..."
 msgstr ""
 
@@ -115,4 +115,12 @@ msgstr ""
 msgid ""
 "Instead of the notification area, use the volume on-screen display area when "
 "switching devices."
+msgstr ""
+
+#: dist/prefs.js:162
+msgid "Play sound on device change"
+msgstr ""
+
+#: dist/prefs.js:163
+msgid "Play an audible alert when switching devices"
 msgstr ""

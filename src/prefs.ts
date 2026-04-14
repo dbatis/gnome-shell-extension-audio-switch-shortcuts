@@ -219,9 +219,16 @@ export default class AudioSwitchShortcutsPreferences extends ExtensionPreference
         notifications.bind_property('active', osd, 'sensitive', null)
         group.add(osd)
 
+        const audio = new Adw.SwitchRow({
+            title: _('Play sound on device change'),
+            subtitle: _('Play an audible alert when switching devices')
+        })
+        group.add(audio)
+
         extensionSettings!.bind(Constants.KEY_INDICATOR, indicator, 'active', Gio.SettingsBindFlags.DEFAULT)
         extensionSettings!.bind(Constants.KEY_NOTIFICATIONS, notifications, 'active', Gio.SettingsBindFlags.DEFAULT)
         extensionSettings!.bind(Constants.KEY_SHOW_VOLUME_OSD, osd, 'active', Gio.SettingsBindFlags.DEFAULT)
+        extensionSettings!.bind(Constants.KEY_PLAY_AUDIO_ALERT, audio, 'active', Gio.SettingsBindFlags.DEFAULT)
 
         // enable/disable OSD setting. This line needs to be here after bindings,
         // else it will not initialise properly when dialog first appears.
