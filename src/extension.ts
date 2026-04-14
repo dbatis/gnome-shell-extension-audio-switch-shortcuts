@@ -22,6 +22,7 @@ export default class AudioSwitchShortCutsExtension extends Extension {
     private mixer?: Mixer
     private mixerSubscription?: MixerSubscription
     private notificationSource?: MessageTray.Source
+    private notificationDestroySignal?: number
 
     enable() {
         this.extensionSettings = this.getSettings()
@@ -190,7 +191,7 @@ export default class AudioSwitchShortCutsExtension extends Extension {
                 policy: policy,
             })
 
-            this.notificationSource.connect('destroy', _ => {
+            this.notificationDestroySignal = this.notificationSource.connect('destroy', _ => {
                 this.notificationSource = undefined
             })
             Main.messageTray.add(this.notificationSource)
@@ -240,6 +241,10 @@ export default class AudioSwitchShortCutsExtension extends Extension {
         this.indicator = undefined
 
         if (this.notificationSource) {
+            if (this.notificationDestroySignal) {
+                this.notificationSource.disconnect(this.notificationDestroySignal)
+                this.notificationDestroySignal = undefined
+            }
             this.notificationSource = undefined
         }
 
