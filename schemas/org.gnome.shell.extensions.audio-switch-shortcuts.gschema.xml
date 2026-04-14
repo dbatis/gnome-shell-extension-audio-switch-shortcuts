@@ -17,6 +17,11 @@
             <summary>Use the volume on-screen display instead of the notification area when switching audio devices.</summary>
         </key>
 
+        <key name="play-audio-alert" type="b">
+            <default>false</default>
+            <summary>Play an audible alert when switching devices.</summary>
+        </key>
+
         <key name="cycle-input-hotkey" type="as">
             <default><![CDATA[['<Ctrl><Alt>equal']]]></default>
             <summary>Keyboard shortcut to switch audio input device.</summary>

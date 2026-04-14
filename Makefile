@@ -11,7 +11,7 @@ node_modules: package.json
 	npm install
 
 compile: node_modules
-	tsc
+	npx tsc
 
 compile_schema: schemas/org.gnome.shell.extensions.audio-switch-shortcuts.gschema.xml
 	glib-compile-schemas --strict schemas

@@ -105,6 +105,7 @@ export default class AudioSwitchShortCutsExtension extends Extension {
             // if false, device was not found and not changed
             this.sendNotification(devices[newIdx])
             this.showVolumeOSD(devices[newIdx])
+            this.playAudioAlert()
         }
 
     }
@@ -178,6 +179,15 @@ export default class AudioSwitchShortCutsExtension extends Extension {
 
         }
 
+    }
+
+    /**
+     * Plays a bell alert sound, if the relevant setting is enabled
+     */
+    async playAudioAlert() {
+        if (!this.extensionSettings!.get_boolean(Constants.KEY_PLAY_AUDIO_ALERT)) return
+        const player = global.display.get_sound_player();
+        player.play_from_theme('bell', 'Bell', null)
     }
 
     private createNotificationSource() {
