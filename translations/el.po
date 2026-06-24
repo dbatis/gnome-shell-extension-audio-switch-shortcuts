@@ -124,3 +124,7 @@ msgid ""
 msgstr ""
 "Χρήση της ένδειξης έντασης ήχου, αντί για τον χώρο ειδοποιήσεων, "
 "κατά την αλλαγή συσκευών."
+
+#: dist/prefs.js:163
+msgid "Play an audible alert when switching devices"
+msgstr "Ηχητική ειδοποίηση κατά την εναλλαγή συσκευών."

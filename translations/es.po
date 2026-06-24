@@ -1,0 +1,99 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-06-19 22:15-0500\n"
+"Last-Translator: macrosiphum\n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+msgid "Appearance"
+msgstr "Apariencia"
+
+msgid "Audio Devices"
+msgstr "Dispositivos de Audio"
+
+msgid "Audio Input"
+msgstr "Entrada de Audio"
+
+msgid "Audio Input Shortcuts"
+msgstr "Atajos para Entrada de Audio"
+
+msgid "Audio Inputs"
+msgstr "Entradas de Audio"
+
+msgid "Audio Output"
+msgstr "Salida de Audio"
+
+msgid "Audio Output Shortcuts"
+msgstr "Atajos para Salida de Audio"
+
+msgid "Audio Outputs"
+msgstr "Salidas de Audio"
+
+msgid "Audio Switch Shortcuts"
+msgstr "Atajos para Salida de Audio"
+
+msgid "Configure the appearance of this extension"
+msgstr "Configurar la apariencia de esta extensión"
+
+msgid "Display a notification message when you press a shortcut"
+msgstr "Mostrar un mensaje de notificación al presionar un atajo"
+
+msgid ""
+"Instead of the notification area, use the volume on-screen display area when "
+"switching devices."
+msgstr ""
+"En lugar del área de notificación, usar el cuadro flotante de volumen en "
+"pantalla al cambiar de dispositivo."
+
+msgid "Keyboard shortcut"
+msgstr "Atajo del teclado"
+
+msgid "New accelerator…"
+msgstr "Nuevo atajo …"
+
+msgid "Preferences..."
+msgstr "Preferencias …"
+
+msgid ""
+"Select the devices to cycle through when the keyboard shortcut is pressed. "
+"Drag them to set the order."
+msgstr ""
+"Selecciona los dispositivos por los que rotar al presionar el atajo de "
+"teclado. Arrástralos para establecer el orden. "
+
+msgid "Settings"
+msgstr "Configuración"
+
+msgid "Show Indicator"
+msgstr "Mostrar Indicador"
+
+msgid "Show Notifications"
+msgstr "Mostrar Notificaciones"
+
+msgid "Show a tray icon, to get to settings quicker"
+msgstr ""
+"Mostrar un icono en la bandeja para acceder más rápido a la configuración"
+
+msgid "Switch to next audio input device"
+msgstr "Cambiar al siguiente dispositivo de entrada de audio"
+
+msgid "Switch to next audio output device"
+msgstr "Cambiar al siguiente dispositivo de salida de audio"
+
+msgid "Use Backspace to clear"
+msgstr "Usar Retroceso (Borrar) para limpiar"
+
+msgid "Use Volume OSD for notifications"
+msgstr "Usar el cuadro flotante de volumen para las notificaciones"
+
+msgid "Play sound on device change"
+msgstr "Reproducir sonido al cambiar de dispositivo"
+
+msgid "Play an audible alert when switching devices"
+msgstr "Reproducir una alerta sonora cuando se conecte un dispositivo"

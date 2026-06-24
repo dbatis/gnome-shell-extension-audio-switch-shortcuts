@@ -107,3 +107,4 @@ You can also disable or remove the extension from the Gnome Extensions applicati
 - [Gnome Workbench](https://github.com/workbenchdev/Workbench) has been an invaluable resource to learn
   to program with GNOME technologies.
 - Thanks to [uwe-ss](https://github.com/uwe-ss) for the German translation.
+- Thanks to [macrosiphum](https://github.com/macrosiphum) for the Spanish translation.
