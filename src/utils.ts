@@ -5,7 +5,7 @@
  * Original code is licensed under the MIT license (https://github.com/marcinjahn/gnome-quicksettings-audio-devices-hider-extension/blob/main/LICENSE)
  */
 
-import GLib from 'gi://GLib'
+import GLib from "gi://GLib";
 
 export function range(amount: number): number[] {
     return [...Array(amount).keys()];

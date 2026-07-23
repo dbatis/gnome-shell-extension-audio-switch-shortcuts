@@ -5,13 +5,13 @@
  * Original code is licensed under the GPL-2.0 license (https://github.com/domferr/tilingshell/blob/main/LICENSE)
  */
 
-import GObject from 'gi://GObject';
-import Gdk from 'gi://Gdk';
-import Gtk from 'gi://Gtk';
-import Adw from 'gi://Adw';
-import Gio from 'gi://Gio';
+import GObject from "gi://GObject";
+import Gdk from "gi://Gdk";
+import Gtk from "gi://Gtk";
+import Adw from "gi://Adw";
+import Gio from "gi://Gio";
 
-import {gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js'
+import {gettext as _} from "resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js";
 
 export function buildShortcutButtonRow(
     settingsKey: string,
@@ -40,15 +40,15 @@ const ShortcutSettingButton = class extends Gtk.Button {
             {
                 Properties: {
                     shortcut: GObject.ParamSpec.string(
-                        'shortcut',
-                        'shortcut',
-                        'The shortcut',
+                        "shortcut",
+                        "shortcut",
+                        "The shortcut",
                         GObject.ParamFlags.READWRITE,
-                        '',
+                        "",
                     ),
                 },
                 Signals: {
-                    changed: { param_types: [GObject.TYPE_STRING] },
+                    changed: {param_types: [GObject.TYPE_STRING]},
                 },
             },
             this,
@@ -69,19 +69,19 @@ const ShortcutSettingButton = class extends Gtk.Button {
             has_frame: false,
         });
 
-        this._shortcut = '';
+        this._shortcut = "";
         this._settingsKey = settingsKey;
         this._gioSettings = gioSettings;
         this._editor = null;
         this._label = new Gtk.ShortcutLabel({
-            disabled_text: _('New accelerator…'),
+            disabled_text: _("New accelerator…"),
             valign: Gtk.Align.CENTER,
             hexpand: false,
             vexpand: false,
         });
 
         // Bind signals
-        this.connect('clicked', this._onActivated.bind(this));
+        this.connect("clicked", this._onActivated.bind(this));
         gioSettings.connect(`changed::${settingsKey}`, () => {
             [this.shortcut] = gioSettings.get_strv(settingsKey);
             this._label.set_accelerator(this.shortcut);
@@ -103,10 +103,10 @@ const ShortcutSettingButton = class extends Gtk.Button {
         const ctl = new Gtk.EventControllerKey();
 
         const content = new Adw.StatusPage({
-            title: _('New accelerator…'),
+            title: _("New accelerator…"),
             // description: this._description,
-            icon_name: 'preferences-desktop-keyboard-shortcuts-symbolic',
-            description: _('Use Backspace to clear'),
+            icon_name: "preferences-desktop-keyboard-shortcuts-symbolic",
+            description: _("Use Backspace to clear"),
         });
 
         this._editor = new Adw.Window({
@@ -120,7 +120,7 @@ const ShortcutSettingButton = class extends Gtk.Button {
         });
 
         this._editor.add_controller(ctl);
-        ctl.connect('key-pressed', this._onKeyPressed.bind(this));
+        ctl.connect("key-pressed", this._onKeyPressed.bind(this));
         this._editor.present();
     }
 
@@ -139,7 +139,7 @@ const ShortcutSettingButton = class extends Gtk.Button {
         }
 
         if (keyval === Gdk.KEY_BackSpace) {
-            this._updateShortcut(''); // Clear
+            this._updateShortcut(""); // Clear
             this._editor?.close();
             return Gdk.EVENT_STOP;
         }
@@ -171,7 +171,7 @@ const ShortcutSettingButton = class extends Gtk.Button {
         this.shortcut = val;
         this._label.set_accelerator(this.shortcut);
         this._gioSettings.set_strv(this._settingsKey, [this.shortcut]);
-        this.emit('changed', this.shortcut);
+        this.emit("changed", this.shortcut);
     }
 
     // Functions from https://gitlab.gnome.org/GNOME/gnome-control-center/-/blob/main/panels/keyboard/keyboard-shortcuts.c
