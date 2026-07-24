@@ -50,16 +50,23 @@ export default class AudioSwitchShortCutsExtension extends Extension {
 
             // listen to devices added or removed
             this.mixerSubscription = this.mixer.subscribeToDeviceChanges(event => {
-                const mixerDevice = this.mixer?.getAudioDevicesFromIds([event.deviceId], event.type);
+                try {
+                    const device = this.mixer?.getAudioDevicesFromIds([event.deviceId], event.type)?.[0];
 
-                if (mixerDevice !== undefined) {
-                    if (event.action === Action.ADDED) {
-                        this.deviceSettings?.addOrEnableDevice(mixerDevice[0].name, mixerDevice[0].id, event.type);
-                    } else if (event.action === Action.REMOVED) {
-                        this.deviceSettings?.disableDevice(mixerDevice[0].name, event.type);
+                    // device id may not resolve yet during the add event; ignore
+                    if (!device) {
+                        return;
                     }
-                }
 
+                    if (event.action === Action.ADDED) {
+                        this.deviceSettings?.addOrEnableDevice(device.name, device.id, event.type);
+                    } else if (event.action === Action.REMOVED) {
+                        this.deviceSettings?.disableDevice(device.name, event.type);
+                    }
+                } catch (error) {
+                    // never let an exception escape into Gvc's signal emission
+                    logError(error);
+                }
             });
 
             // Add keybindings
@@ -70,7 +77,7 @@ export default class AudioSwitchShortCutsExtension extends Extension {
             Main.wm.addKeybinding(Constants.KEY_INPUT_HOTKEY, this.extensionSettings!,
                 Meta.KeyBindingFlags.NONE, Shell.ActionMode.NORMAL,
                 _ => this.switchToNextDevice(DeviceType.INPUT));
-        });
+        }).catch(error => logError(error));
 
     }
 

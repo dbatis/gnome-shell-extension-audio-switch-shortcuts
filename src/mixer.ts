@@ -11,7 +11,7 @@ import * as Volume from "resource:///org/gnome/shell/ui/status/volume.js";
 import * as Main from "resource:///org/gnome/shell/ui/main.js";
 
 import {DeviceType, StoredDevice} from "./deviceSettings.js";
-import {delay, range} from "./utils.js";
+import {delay} from "./utils.js";
 
 export enum Action {
     ADDED = "ADDED",
@@ -202,14 +202,13 @@ export class Mixer {
         ids: number[],
         type: DeviceType,
     ): Gvc.MixerUIDevice[] {
-        return ids.map((id) => {
-            const lookup =
+        return ids
+            .map((id) =>
                 type === DeviceType.OUTPUT
                     ? this.control.lookup_output_id(id)
-                    : this.control.lookup_input_id(id);
-
-            return lookup;
-        });
+                    : this.control.lookup_input_id(id),
+            )
+            .filter((device): device is Gvc.MixerUIDevice => device !== null);
     }
 
     getDefaultOutput(): string {
@@ -275,23 +274,24 @@ export class Mixer {
     }
 
     /**
-     * Uses a Dummy Device "trick" from
-     * https://github.com/kgshank/gse-sound-output-device-chooser/blob/master/sound-output-device-chooser@kgshank.net/base.js#LL299C20-L299C20
+     * Look up a device by its display name (fallback when a stored id no longer
+     * resolves, e.g. after a reboot).
+     *
+     * NOTE: GNOME 50's Gvc exposes sinks/sources as `MixerSink`/`MixerSource`,
+     * which are not interchangeable with the `MixerUIDevice` that `change_output`
+     * expects, so a safe cross-type name lookup is not currently possible.
+     * Returns undefined until a reliable mapping is available; callers already
+     * handle that by skipping the switch.
+     *
      * @param name display name
      * @param type device type
-     * @returns mixer stream
+     * @returns mixer device, or undefined when not found
      */
     private getDeviceFromName(
         name: string,
         type: DeviceType,
     ): Gvc.MixerUIDevice | undefined {
-        const dummyDevice = new Gvc.MixerUIDevice();
-        const devices = this.getUIDevicesFromIds(range(dummyDevice.get_id()), type);
-        console.info(devices);
-
-        return devices.find(
-            (d) => d !== null && this.constructDeviceName(d) === name,
-        );
+        return undefined;
     }
 
     subscribeToDeviceChanges(
