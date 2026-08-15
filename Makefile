@@ -3,7 +3,7 @@ DOMAIN=dbatis.github.com
 
 OUTPUT_DIR=dist
 
-.PHONY: all compile compile_schema translate pack install clean
+.PHONY: all compile compile_schema translate pack install clean format format-check
 
 all: compile compile_schema translate
 
@@ -29,4 +29,10 @@ install: pack
 
 clean:
 	@rm -rf $(OUTPUT_DIR) gschemas/gschemas.compiled
+
+format: node_modules
+	npx prettier --write .
+
+format-check: node_modules
+	npx prettier --check .
 

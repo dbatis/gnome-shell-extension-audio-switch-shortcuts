@@ -41,6 +41,7 @@ You may need to log out of your current session and log back in again for the ex
 ### Install from source
 
 Clone this repository in any folder, then:
+
 ```shell
 cd <repo-folder>
 make install
@@ -55,24 +56,25 @@ Once the extension is installed, it needs to be configured before it can actuall
 none of the audio devices are selected to be cycled through when the keyboard shortcuts are pressed. Therefore,
 you will need to open the **Preferences** window to set up the extension.
 
-In order to do so, click on the tray icon and select **Preferences...**, or open the Gnome Extensions app, 
+In order to do so, click on the tray icon and select **Preferences...**, or open the Gnome Extensions app,
 find the Audio Switch Shortcuts extension and select **Settings**.
 
-The **Settings** page consists of three tabs. The *Audio Output* and *Audio Input* tabs are similar. They allow
+The **Settings** page consists of three tabs. The _Audio Output_ and _Audio Input_ tabs are similar. They allow
 you to select the devices you want to toggle, and the keyboard shortcut. You can also drag around the audio devices that
 appear there, so that you can set the order in which they will be cycled through.
 
-
 The default shortcuts, which can be customized as needed, are:
+
 - `Ctrl + Alt + - (minus sign key)` to switch audio outputs.
 - `Ctrl + Alt + = (equal sign key)` to switch audio inputs.
 
 When cycling through devices, any disconnected devices will be ignored. But the extension will remember that they
 have been toggled on, so that they become available again when re-connected.
 
-Finally, in the *Settings* tab, you can also set:
+Finally, in the _Settings_ tab, you can also set:
+
 - if the tray icon will be visible. If not visible, you can still reach the Settings page through the Gnome Extensions
- application.
+  application.
 - if a short notification will be shown every time you cycle through devices. The notification is temporary
   and will not stay in the Notification Center. Notifications are shown only when a device switch actually occurs.
   So, if you have only toggled on one device, and its already the default device, no notification will be displayed.

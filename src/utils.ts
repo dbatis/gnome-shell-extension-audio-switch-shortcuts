@@ -8,39 +8,39 @@
 import GLib from "gi://GLib";
 
 export function range(amount: number): number[] {
-    return [...Array(amount).keys()];
+	return [...Array(amount).keys()];
 }
 
 let timeoutSourceIds: number[] | null = [];
 
 export function delay(milliseconds: number) {
-    return new Promise((resolve) => {
-        const timeoutId = GLib.timeout_add(
-            GLib.PRIORITY_DEFAULT,
-            milliseconds,
-            () => {
-                removeFinishedTimeoutId(timeoutId);
-                resolve(undefined);
+	return new Promise((resolve) => {
+		const timeoutId = GLib.timeout_add(
+			GLib.PRIORITY_DEFAULT,
+			milliseconds,
+			() => {
+				removeFinishedTimeoutId(timeoutId);
+				resolve(undefined);
 
-                return GLib.SOURCE_REMOVE;
-            }
-        );
+				return GLib.SOURCE_REMOVE;
+			},
+		);
 
-        if (!timeoutSourceIds) {
-            timeoutSourceIds = [];
-        }
-        timeoutSourceIds.push(timeoutId);
-    });
+		if (!timeoutSourceIds) {
+			timeoutSourceIds = [];
+		}
+		timeoutSourceIds.push(timeoutId);
+	});
 }
 
 function removeFinishedTimeoutId(timeoutId: number) {
-    timeoutSourceIds?.splice(timeoutSourceIds.indexOf(timeoutId), 1);
+	timeoutSourceIds?.splice(timeoutSourceIds.indexOf(timeoutId), 1);
 }
 
 export function disposeDelayTimeouts() {
-    timeoutSourceIds?.forEach((sourceId) => {
-        GLib.Source.remove(sourceId);
-    });
+	timeoutSourceIds?.forEach((sourceId) => {
+		GLib.Source.remove(sourceId);
+	});
 
-    timeoutSourceIds = null;
+	timeoutSourceIds = null;
 }
