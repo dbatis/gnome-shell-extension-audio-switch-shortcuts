@@ -279,6 +279,9 @@ export class Mixer {
 		}
 	}
 	/**
+	 * Uses a Dummy Device "trick" from
+	 * https://github.com/kgshank/gse-sound-output-device-chooser/blob/master/sound-output-device-chooser@kgshank.net/base.js#LL299C20-L299C20
+	 *
 	 * @param name display name
 	 * @param type device type
 	 * @returns mixer stream
