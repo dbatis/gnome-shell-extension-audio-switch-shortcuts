@@ -31,16 +31,13 @@ export default class AudioSwitchShortCutsExtension extends Extension {
 		this.deviceSettings = new DeviceSettings(this.extensionSettings);
 		this.taskbarIcon();
 
-		// register available devices, update the stored settings accordingly.
 		new MixerSource()
 			.getMixer()
 			.then((mixer) => {
 				this.mixer = mixer;
 
-				// set all devices as inactive, so that we re-set their status
 				this.deviceSettings?.preStartup();
 
-				// add devices in settings
 				this.mixer
 					.getAllDevices(DeviceType.OUTPUT)
 					.forEach((device) => {
@@ -58,10 +55,8 @@ export default class AudioSwitchShortCutsExtension extends Extension {
 					);
 				});
 
-				// remove inactive, non-cycled devices
 				this.deviceSettings?.postStartup();
 
-				// listen to devices added or removed
 				this.mixerSubscription = this.mixer.subscribeToDeviceChanges(
 					(event) => {
 						try {
@@ -70,7 +65,6 @@ export default class AudioSwitchShortCutsExtension extends Extension {
 								event.type,
 							)?.[0];
 
-							// device id may not resolve yet during the add event; ignore
 							if (!device) {
 								return;
 							}
@@ -88,13 +82,11 @@ export default class AudioSwitchShortCutsExtension extends Extension {
 								);
 							}
 						} catch (error) {
-							// never let an exception escape into Gvc's signal emission
 							logError(error);
 						}
 					},
 				);
 
-				// Add keybindings
 				Main.wm.addKeybinding(
 					Constants.KEY_OUTPUT_HOTKEY,
 					this.extensionSettings!,
