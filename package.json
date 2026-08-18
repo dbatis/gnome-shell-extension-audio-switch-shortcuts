@@ -1,6 +1,6 @@
 {
 	"name": "gnome-shell-extension-audio-switch-shortcuts",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"description": "Add keyboard shortcuts to switch audio input and output.",
 	"type": "module",
 	"private": true,
