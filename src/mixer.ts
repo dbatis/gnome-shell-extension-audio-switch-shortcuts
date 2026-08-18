@@ -11,7 +11,7 @@ import * as Volume from "resource:///org/gnome/shell/ui/status/volume.js";
 import * as Main from "resource:///org/gnome/shell/ui/main.js";
 
 import { DeviceType, StoredDevice } from "./deviceSettings.js";
-import { delay, range } from "./utils.js";
+import { delay } from "./utils.js";
 
 export enum Action {
 	ADDED = "ADDED",
@@ -83,20 +83,6 @@ export class Mixer {
 		return this.getAudioDevicesFromIds(ids, type);
 	}
 
-	/**
-	 * Makes a best-effort to get the name of a device from the Quick Settings Audio Panel.
-	 *
-	 * This method is useful in case the user has an extension like
-	 * https://github.com/marcinjahn/gnome-quicksettings-audio-devices-renamer-extension/tree/main
-	 * which renames audio devices.
-	 *
-	 * As other extensions also interfere with how the audio panel works, it is not guaranteed
-	 * that any name will be found (for instance, if an extension to hide devices has been used).
-	 *
-	 * @param device stored device in extension's settings
-	 *
-	 * @returns device name, if found, or undefined when this did not work
-	 */
 	getAudioPanelDeviceName(device: StoredDevice): string | undefined {
 		try {
 			const quickSettings = Main.panel.statusArea.quickSettings;
@@ -106,8 +92,7 @@ export class Mixer {
 					: quickSettings?._volumeInput?._input._deviceItems;
 
 			return quickSettingsDevices?.get(device.id)?.label.get_text();
-		} catch (error) {
-			// another extension may have messed with the audio panel
+		} catch {
 			return undefined;
 		}
 	}
@@ -278,28 +263,36 @@ export class Mixer {
 			return false;
 		}
 	}
-	/**
-	 * Uses a Dummy Device "trick" from
-	 * https://github.com/kgshank/gse-sound-output-device-chooser/blob/master/sound-output-device-chooser@kgshank.net/base.js#LL299C20-L299C20
-	 *
-	 * @param name display name
-	 * @param type device type
-	 * @returns mixer stream
-	 */
 	private getDeviceFromName(
 		name: string,
 		type: DeviceType,
 	): Gvc.MixerUIDevice | undefined {
-		const dummyDevice = new Gvc.MixerUIDevice();
-		const devices = this.getUIDevicesFromIds(
-			range(dummyDevice.get_id()),
-			type,
-		);
-		console.info(devices);
+		const quickSettings = Main.panel.statusArea.quickSettings;
+		if (!quickSettings) {
+			return undefined;
+		}
 
-		return devices.find(
-			(d) => d !== null && this.constructDeviceName(d) === name,
-		);
+		const deviceItems =
+			type === DeviceType.OUTPUT
+				? quickSettings._volumeOutput?._output._deviceItems
+				: quickSettings._volumeInput?._input._deviceItems;
+
+		if (!deviceItems) {
+			return undefined;
+		}
+
+		for (const [id] of deviceItems) {
+			const device =
+				type === DeviceType.OUTPUT
+					? this.control.lookup_output_id(id)
+					: this.control.lookup_input_id(id);
+
+			if (device && this.constructDeviceName(device) === name) {
+				return device;
+			}
+		}
+
+		return undefined;
 	}
 
 	subscribeToDeviceChanges(
